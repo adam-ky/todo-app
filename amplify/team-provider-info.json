@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-tasktodo-dev-233343-authRole",
+      "UnauthRoleArn": "arn:aws:iam::745117916530:role/amplify-tasktodo-dev-233343-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::745117916530:role/amplify-tasktodo-dev-233343-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-tasktodo-dev-233343-deployment",
+      "UnauthRoleName": "amplify-tasktodo-dev-233343-unauthRole",
+      "StackName": "amplify-tasktodo-dev-233343",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:745117916530:stack/amplify-tasktodo-dev-233343/c8967790-350b-11ed-926d-02f6d8c2d12a",
+      "AmplifyAppId": "d2e9ar60t0qsf1"
+    },
+    "categories": {
+      "function": {
+        "taskTodoLF": {
+          "deploymentBucketName": "amplify-tasktodo-dev-233343-deployment",
+          "s3Key": "amplify-builds/taskTodoLF-4552316b6c4c4764714c-build.zip"
+        }
+      }
+    }
+  }
+}
