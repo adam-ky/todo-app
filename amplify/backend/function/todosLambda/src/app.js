@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const { v4: uuidv4 } = require("uuid");
 
-console.log(process.env.TABLE_REGION);
+console.log(`dynamodb region: ${process.env.TABLE_REGION}`);
 AWS.config.update({ region: "ap-southeast-1" });
 
 const dynamodb = new AWS.DynamoDB.DocumentClient();
@@ -102,7 +102,7 @@ app.put("/todos", function (req, res) {
     params.ExpressionAttributeValues[":description"] = req.body.description;
     params.UpdateExpression += "description = :description ";
   }
-  if (req.body.isComplete) {
+  if (req.body.isComplete !== undefined) {
     params.ExpressionAttributeValues[":isComplete"] = req.body.isComplete;
     params.UpdateExpression += "isComplete = :isComplete ";
   }
