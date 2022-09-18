@@ -5,8 +5,15 @@ const awsmobile = {
     "aws_project_region": "ap-southeast-1",
     "aws_cloud_logic_custom": [
         {
-            "name": "TaskTodo",
-            "endpoint": "https://lklexux2ea.execute-api.ap-southeast-1.amazonaws.com/dev",
+            "name": "todosApi",
+            "endpoint": "https://6e5n8wuxwj.execute-api.ap-southeast-1.amazonaws.com/dev",
+            "region": "ap-southeast-1"
+        }
+    ],
+    "aws_dynamodb_all_tables_region": "ap-southeast-1",
+    "aws_dynamodb_table_schemas": [
+        {
+            "tableName": "todosTable-dev",
             "region": "ap-southeast-1"
         }
     ]

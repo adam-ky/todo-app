@@ -1,9 +1,9 @@
 {
   "version": 1,
   "paths": {
-    "/tasks": {
-      "name": "/tasks",
-      "lambdaFunction": "taskTodoLF",
+    "/todos": {
+      "name": "/todos",
+      "lambdaFunction": "todosLambda",
       "permissions": {
         "setting": "open"
       }

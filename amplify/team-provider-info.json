@@ -15,7 +15,11 @@
       "function": {
         "taskTodoLF": {
           "deploymentBucketName": "amplify-tasktodo-dev-233343-deployment",
-          "s3Key": "amplify-builds/taskTodoLF-4552316b6c4c4764714c-build.zip"
+          "s3Key": "amplify-builds/taskTodoLF-306948366e3359506d6f-build.zip"
+        },
+        "todosLambda": {
+          "deploymentBucketName": "amplify-tasktodo-dev-233343-deployment",
+          "s3Key": "amplify-builds/todosLambda-5a5a6755366f3465566b-build.zip"
         }
       }
     }
