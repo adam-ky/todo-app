@@ -3,18 +3,14 @@ import Todo from "./Todo";
 import "./App.css";
 import { Amplify } from "aws-amplify";
 import awsconfig from "./aws-exports";
-import {
-  createTodo as _createTodo,
-  deleteTodo as _deleteTodo,
-  fetchTodos as _fetchTodos,
-} from "./Api";
-import { Button, Card, Heading, TextField } from "@aws-amplify/ui-react";
+import { createTodo as _createTodo, fetchTodos as _fetchTodos } from "./Api";
+import { Card, Heading, TextField } from "@aws-amplify/ui-react";
 
 Amplify.configure(awsconfig);
 
 function App() {
   const [todoList, setTodoList] = useState([]);
-  const [description, setDescription] = useState("");
+  const [input, setInput] = useState("");
 
   useEffect(() => {
     fetchTodos();
@@ -35,24 +31,29 @@ function App() {
     );
   };
 
-  const createTodo = async () => {
-    const newTodo = await _createTodo(description);
-    setTodoList([...todoList, newTodo]);
+  const createTodo = async e => {
+    if (e.key === "Enter") {
+      const newTodo = await _createTodo(input);
+      setTodoList([...todoList, newTodo]);
+      setInput("");
+    }
   };
 
   return (
     <div className="wrapper">
-      <Card>
+      <Card className="todo-wrapper" variation="elevated">
         <Heading className="header" level={1}>
-          TODO APP
+          TODO LIST
         </Heading>
         <div className="body">
           <TextField
+            autoComplete="none"
             className="input"
-            label="Create new task"
-            onChange={e => setDescription(e.currentTarget.value)}
-            outerEndComponent={<Button onClick={createTodo}>Create</Button>}
-            placeholder="CS3219 post-lecture quiz"
+            label="Add a Todo"
+            onChange={e => setInput(e.currentTarget.value)}
+            placeholder="e.g. CS3219 quiz"
+            value={input}
+            onKeyDown={createTodo}
           />
           {getTodoList()}
         </div>

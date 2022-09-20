@@ -10,11 +10,10 @@
   justify-content: center;
 }
 
-.app {
-  min-width: 450px;
+.todo-wrapper {
+  width: 450px;
   min-height: 650px;
   border-radius: 10px;
-  box-shadow: 3px 6px 40px #000;
 }
 
 .header {
@@ -24,7 +23,7 @@
 
 .body {
   margin: 0 auto;
-  width: 80%;
+  width: 85%;
 }
 
 .input {
@@ -32,6 +31,7 @@
 }
 
 .todo-item__task {
+  min-width: 0;
   width: 100%;
 }
 
@@ -44,4 +44,11 @@
 .complete {
   text-decoration-line: line-through;
   opacity: 0.6;
+}
+
+.todo-item__text {
+  overflow: hidden;
+  font-size: 14px;
+  word-wrap: break-word;
+  max-width: fit-content;
 }

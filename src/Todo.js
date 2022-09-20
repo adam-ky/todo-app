@@ -1,15 +1,15 @@
 import { React, useState } from "react";
 import {
   CheckboxField,
-  Menu,
-  MenuButton,
+  Button,
   Flex,
+  Icon,
   Text,
   TextField,
-  TextAreaField,
 } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import { deleteTodo as _deleteTodo, editTodo as _editTodo } from "./Api";
+import { MdDelete, MdMode } from "react-icons/md";
 
 function Todo(props) {
   const { id, description, isComplete, fetchTodos } = props;
@@ -38,25 +38,50 @@ function Todo(props) {
   };
 
   return (
-    <Flex margin="10px 0" alignItems="center" gap={0}>
+    <Flex margin="15px 0" alignItems="center" gap={0}>
       <Flex className="todo-item__task">
         <CheckboxField
           checked={checked}
           onChange={handleComplete} //TODO: handle PUT request
+          onFocus="none"
+          size="large"
+          varaition="quiet"
         />
         {!isEdit && (
-          <Text maxWidth="120px" textDecoration={checked && "line-through"}>
+          <Text
+            className="todo-item__text"
+            textDecoration={checked && "line-through"}
+          >
             {description}
           </Text>
         )}
         {isEdit && (
-          <TextAreaField defaultValue={description} onKeyDown={confirmEdit} />
+          <TextField
+            width="100%"
+            defaultValue={description}
+            onKeyDown={confirmEdit}
+          />
         )}
       </Flex>
-      <Menu className="todo-item__settings" size="small">
-        <MenuButton onClick={editTodo}>Edit</MenuButton>
-        <MenuButton onClick={deleteTodo}>Delete</MenuButton>
-      </Menu>
+      <Button
+        onFocusCapture="none"
+        onClick={editTodo}
+        size="large"
+        variation="link"
+        margin="0 5px"
+      >
+        <Icon as={MdMode} />
+      </Button>
+
+      <Button
+        onFocus="none"
+        color="red"
+        onClick={deleteTodo}
+        size="large"
+        variation="link"
+      >
+        <Icon as={MdDelete} />
+      </Button>
     </Flex>
   );
 }
