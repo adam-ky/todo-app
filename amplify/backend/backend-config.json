@@ -1,10 +1,5 @@
 {
   "function": {
-    "taskTodoLF": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
     "todosLambda": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -13,10 +8,7 @@
         {
           "category": "storage",
           "resourceName": "todosTable",
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
+          "attributes": ["Name", "Arn"],
           "attributeEnvMap": {
             "Name": "TABLE_NAME",
             "Arn": "TABLE_ARN"
@@ -33,10 +25,7 @@
         {
           "category": "function",
           "resourceName": "todosLambda",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
+          "attributes": ["Name", "Arn"]
         }
       ]
     }
