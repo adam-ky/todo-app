@@ -31,11 +31,6 @@
   margin: 20px 0;
 }
 
-/* 
-.todo-item button:last-child {
-  margin-left: auto;
-} */
-
 .todo-item__task {
   width: 100%;
 }

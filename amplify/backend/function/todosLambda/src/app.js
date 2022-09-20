@@ -73,8 +73,6 @@ app.post("/todos", function (req, res) {
       isComplete: false,
     },
   };
-
-  console.log(params);
   dynamodb.put(params, err => {
     if (err) {
       res.json({ statusCode: 500, error: err.message, url: req.url });
@@ -106,10 +104,8 @@ app.put("/todos", function (req, res) {
     params.ExpressionAttributeValues[":isComplete"] = req.body.isComplete;
     params.UpdateExpression += "isComplete = :isComplete ";
   }
-  console.log(params.UpdateExpression);
   dynamodb.update(params, (err, result) => {
     if (err) {
-      console.log(err);
       res.json({ statusCode: 500, error: err.message, url: req.url });
     } else {
       res.json({
@@ -127,15 +123,17 @@ app.delete("/todos/:id", function (req, res) {
     Key: {
       id: req.params.id,
     },
+    ReturnValues: "ALL_OLD",
   };
   dynamodb.delete(params, (err, result) => {
     if (err) {
       res.json({ statusCode: 500, error: err.message, url: req.url });
     } else {
+      console.log(result);
       res.json({
         statusCode: 200,
         url: req.url,
-        body: JSON.stringify(result),
+        body: JSON.stringify(result.Attributes),
       });
     }
   });

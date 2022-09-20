@@ -20,10 +20,25 @@ export async function createTodo(description) {
     });
 }
 
+export async function editTodo(id, description) {
+  const req = {
+    id,
+    description,
+  };
+  return API.post("todosApi", "/todos", { body: req })
+    .then(res => {
+      console.log(res.body);
+      return res.body;
+    })
+    .catch(err => {
+      console.log(err.body);
+    });
+}
+
 export async function deleteTodo(id) {
   return API.del("todosApi", `/todos/${id}`, {})
     .then(res => {
-      console.log(res.body);
+      console.log(res.body); //TODO: modify to return deleted item
     })
     .catch(err => {
       console.log(err.body);

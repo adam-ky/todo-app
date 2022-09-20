@@ -19,7 +19,7 @@
         },
         "todosLambda": {
           "deploymentBucketName": "amplify-tasktodo-dev-233343-deployment",
-          "s3Key": "amplify-builds/todosLambda-5a5a6755366f3465566b-build.zip"
+          "s3Key": "amplify-builds/todosLambda-6a4c5a38526149687157-build.zip"
         }
       }
     }

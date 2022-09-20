@@ -3,7 +3,11 @@ import Todo from "./Todo";
 import "./App.css";
 import { Amplify } from "aws-amplify";
 import awsconfig from "./aws-exports";
-import { createTodo as _createTodo, fetchTodos as _fetchTodos } from "./Api";
+import {
+  createTodo as _createTodo,
+  deleteTodo as _deleteTodo,
+  fetchTodos as _fetchTodos,
+} from "./Api";
 import { Button, Card, Heading, TextField } from "@aws-amplify/ui-react";
 
 Amplify.configure(awsconfig);
@@ -17,13 +21,7 @@ function App() {
   }, []);
 
   const fetchTodos = async () => {
-    // console.log("fetching todos...");
     const newTodoList = await _fetchTodos();
-    // console.log(`Previous todo list: ${todoList}`);
-    // console.log(`New todo list: ${todos}`);
-    // console.log(
-    //   `Are previous and new todo lists equal?: ${todos === todoList}`
-    // );
     setTodoList(newTodoList);
   };
 
@@ -31,7 +29,7 @@ function App() {
     return (
       <div>
         {todoList.map(todo => (
-          <Todo {...todo} />
+          <Todo {...todo} fetchTodos={fetchTodos} />
         ))}
       </div>
     );
