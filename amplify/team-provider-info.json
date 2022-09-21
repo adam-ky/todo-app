@@ -16,6 +16,14 @@
         "todosLambda": {
           "deploymentBucketName": "amplify-tasktodo-dev-233343-deployment",
           "s3Key": "amplify-builds/todosLambda-6e56733970774e526c36-build.zip"
+        },
+        "quoteLambda": {
+          "deploymentBucketName": "amplify-tasktodo-dev-233343-deployment",
+          "s3Key": "amplify-builds/quoteLambda-554d6337467545474a67-build.zip"
+        },
+        "tasktodonodeLayer": {
+          "deploymentBucketName": "amplify-tasktodo-dev-233343-deployment",
+          "s3Key": "amplify-builds/tasktodonodeLayer-LambdaLayerVersion7e0f8f9e-build.zip"
         }
       }
     }

@@ -42,7 +42,7 @@ function Todo(props) {
       <Flex className="todo-item__task">
         <CheckboxField
           checked={checked}
-          onChange={handleComplete} //TODO: handle PUT request
+          onChange={handleComplete} //TODO: handle checked with PUT request
           onFocus="none"
           size="large"
           varaition="quiet"

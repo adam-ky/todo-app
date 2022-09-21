@@ -44,3 +44,13 @@ export async function deleteTodo(id) {
       console.log(err.body);
     });
 }
+
+export async function fetchQuote() {
+  return API.get("todosApi", "/quote", {})
+    .then(res => {
+      return JSON.parse(res.body);
+    })
+    .catch(err => {
+      console.log(err.response);
+    });
+}

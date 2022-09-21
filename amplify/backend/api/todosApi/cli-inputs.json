@@ -7,6 +7,13 @@
       "permissions": {
         "setting": "open"
       }
+    },
+    "/quote": {
+      "name": "/quote",
+      "lambdaFunction": "quoteLambda",
+      "permissions": {
+        "setting": "open"
+      }
     }
   }
 }

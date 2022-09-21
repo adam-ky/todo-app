@@ -8,13 +8,27 @@
         {
           "category": "storage",
           "resourceName": "todosTable",
-          "attributes": ["Name", "Arn"],
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
           "attributeEnvMap": {
             "Name": "TABLE_NAME",
             "Arn": "TABLE_ARN"
           }
         }
       ]
+    },
+    "quoteLambda": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": []
+    },
+    "tasktodonodeLayer": {
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer",
+      "build": true
     }
   },
   "api": {
@@ -25,7 +39,18 @@
         {
           "category": "function",
           "resourceName": "todosLambda",
-          "attributes": ["Name", "Arn"]
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "quoteLambda",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
         }
       ]
     }

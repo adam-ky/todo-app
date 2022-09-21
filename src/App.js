@@ -3,17 +3,23 @@ import Todo from "./Todo";
 import "./App.css";
 import { Amplify } from "aws-amplify";
 import awsconfig from "./aws-exports";
-import { createTodo as _createTodo, fetchTodos as _fetchTodos } from "./Api";
-import { Card, Heading, TextField } from "@aws-amplify/ui-react";
+import {
+  createTodo as _createTodo,
+  fetchTodos as _fetchTodos,
+  fetchQuote as _fetchQuote,
+} from "./Api";
+import { Card, Heading, Text, TextField } from "@aws-amplify/ui-react";
 
 Amplify.configure(awsconfig);
 
 function App() {
   const [todoList, setTodoList] = useState([]);
   const [input, setInput] = useState("");
+  const [quote, setQuote] = useState("");
 
   useEffect(() => {
     fetchTodos();
+    fetchQuote();
   }, []);
 
   const fetchTodos = async () => {
@@ -39,12 +45,29 @@ function App() {
     }
   };
 
+  const fetchQuote = async () => {
+    if (!quote) {
+      const response = await _fetchQuote();
+      const { q, a } = response;
+      setQuote(`"${q}"—${a}`);
+    }
+  };
+
+  const getQuoteElement = () => {
+    return (
+      <Text color="grey" fontStyle="italic" textAlign="center" margin="0 30px">
+        {quote}
+      </Text>
+    );
+  };
+
   return (
     <div className="wrapper">
       <Card className="todo-wrapper" variation="elevated">
         <Heading className="header" level={1}>
           TODO LIST
         </Heading>
+        {getQuoteElement()}
         <div className="body">
           <TextField
             autoComplete="none"
